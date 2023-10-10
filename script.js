@@ -1,93 +1,85 @@
-// Ordlistan
-const wordList = ["apple", "banana", "cherry", "date", "elderberry"];
+const words = ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape"];
 
-// Slumpa ett ord från listan
-const randomIndex = Math.floor(Math.random() * wordList.length);
-const randomWord = wordList[randomIndex];
+let selectedWord = "";
+let guessedWord = [];
+let wrongGuesses = [];
+let attemptsLeft = 6;
+let gameWon = false;
 
-// Delar av spelet
-const wordDisplay = document.getElementById("word-display");
-const guessesDisplay = document.getElementById("guesses");
-const hangmanDisplay = document.getElementById("hangman");
-const guessInput = document.getElementById("guess-input");
-const guessButton = document.getElementById("guess-button");
+// Select a random word from the words array
+function selectRandomWord() {
+    return words[Math.floor(Math.random() * words.length)];
+}
 
-// Konvertera ordet till understreck
-let hiddenWord = randomWord.replace(/./g, "_");
+// Initialize the game
+function initGame() {
+    selectedWord = selectRandomWord().toLowerCase();
+    guessedWord = Array(selectedWord.length).fill("_");
+    wrongGuesses = [];
+    attemptsLeft = 6;
+    gameWon = false;
 
-// Visa det slumpade ordet som understreck
-wordDisplay.textContent = hiddenWord;
+    updateDisplay();
+}
 
-// Håll reda på gissningar och fel
-const guesses = [];
-let wrongGuesses = 0;
+// Update the display
+function updateDisplay() {
+    const hangmanImage = document.getElementById("hangman-image");
+    const wordDisplay = document.getElementById("word-display");
+    const guessesDisplay = document.getElementById("guesses");
+    const message = document.getElementById("message");
 
-// Gissa-funktionen
-function makeGuess() {
-    const guess = guessInput.value.toLowerCase();
+    hangmanImage.src = `hangman-${attemptsLeft}.png`;
+    wordDisplay.textContent = guessedWord.join(" ");
+    guessesDisplay.textContent = `Wrong guesses: ${wrongGuesses.join(", ")}`;
 
-    if (guess.length !== 1 || !/[a-z]/.test(guess)) {
-        alert("Du kan bara gissa en bokstav i taget.");
-        guessInput.value = "";
-        return;
+    if (gameWon) {
+        message.textContent = "Congratulations! You won!";
+    } else if (attemptsLeft === 0) {
+        message.textContent = `Game over. The word was "${selectedWord}".`;
+    } else {
+        message.textContent = "";
     }
+}
 
-    if (guesses.includes(guess)) {
-        alert("Du har redan gissat den här bokstaven.");
-        guessInput.value = "";
-        return;
-    }
-
-    guesses.push(guess);
-
-    if (randomWord.includes(guess)) {
-        // Rätt gissning
-        for (let i = 0; i < randomWord.length; i++) {
-            if (randomWord[i] === guess) {
-                hiddenWord = hiddenWord.substring(0, i) + guess + hiddenWord.substring(i + 1);
+// Check if the guessed letter is correct
+function checkGuess(letter) {
+    if (selectedWord.includes(letter)) {
+        for (let i = 0; i < selectedWord.length; i++) {
+            if (selectedWord[i] === letter) {
+                guessedWord[i] = letter;
             }
         }
-
-        wordDisplay.textContent = hiddenWord;
-
-        if (!hiddenWord.includes("_")) {
-            // Alla bokstäver är gissade
-            alert("Du vann! Ordet var: " + randomWord);
-            resetGame();
-        }
     } else {
-        // Fel gissning
-        wrongGuesses++;
-        updateHangmanDisplay();
-        if (wrongGuesses === 6) {
-            // Sex fel gissningar, förlorat spelet
-            alert("Du förlorade. Ordet var: " + randomWord);
-            resetGame();
+        wrongGuesses.push(letter);
+        attemptsLeft--;
+    }
+
+    if (guessedWord.join("") === selectedWord) {
+        gameWon = true;
+    }
+
+    updateDisplay();
+}
+
+// Event listener for guess button click
+document.getElementById("guess-button").addEventListener("click", () => {
+    const guessInput = document.getElementById("guess-input");
+    const guess = guessInput.value.toLowerCase();
+
+    if (guess.length === 1 && /^[a-zA-Z]+$/.test(guess)) {
+        if (!guessedWord.includes(guess) && !wrongGuesses.includes(guess)) {
+            checkGuess(guess);
         }
     }
 
-    guessesDisplay.textContent = "Gissningar: " + guesses.join(", ");
     guessInput.value = "";
-}
+});
 
-function updateHangmanDisplay() {
-    // Uppdatera visningen av hänga gubben baserat på fel gissningar
-    // Du kan använda CSS för att visa olika delar av gubben.
-}
+// Event listener for restart button click
+document.getElementById("restart-button").addEventListener("click", () => {
+    initGame();
+});
 
-function resetGame() {
-    // Återställ spelet för en ny omgång
-    randomWord = wordList[Math.floor(Math.random() * wordList.length)];
-    hiddenWord = randomWord.replace(/./g, "_");
-    wordDisplay.textContent = hiddenWord;
-    guesses.length = 0;
-    wrongGuesses = 0;
-    guessesDisplay.textContent = "";
-    hangmanDisplay.textContent = "";
-    guessInput.value = "";
-}
-
-// Lyssna på knappen för att göra en gissning
-guessButton.addEventListener("click", makeGuess);
-
-// Lyssna på tangenttryckning för att göra en giss
+// Initialize the game when the page loads
+window.onload = initGame;

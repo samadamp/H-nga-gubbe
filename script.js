@@ -1,4 +1,4 @@
-const arrayStrings = ["apple", "banana", "cherry"];
+/* const arrayStrings = ["apple", "banana", "cherry"];
 const letterToFind = "a";
 
 function letterInArray(letter, arrayOfStrings) {
@@ -18,3 +18,8 @@ function letterInArray(letter, arrayOfStrings) {
   } else {
     console.log(`The letter "${letterToFind}" is not in the array.`);
   }
+ */
+
+
+
+  

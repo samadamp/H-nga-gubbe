@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hänga Gubbe</title>
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-    <header><h1>Title</h1></header>
-
-    <main>  
-    <img src="img/hangman.svg" alt=""> 
-    <button>knapp</button>
-</main>   
+    <div id="word-display"></div>
+    <div id="guesses"></div>
+    <div id="hangman"></div>
+    <input type="text" id="guess-input" maxlength="1">
+    <button id="guess-button">Gissa</button>
+    <div id="play-again-modal" class="modal">
+        <div class="modal-content">
+          <p>Vill du spela igen?</p>
+          <button id="yes-button">Ja</button>
+          <button id="no-button">Nej</button>
+        </div>
+      </div>
     
+
+
 </body>
 </html>

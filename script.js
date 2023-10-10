@@ -6,4 +6,3 @@ function getUserInput(letter){
     document.querySelector("aside > ul").append(listItem)
 
 }
-getUserInput()

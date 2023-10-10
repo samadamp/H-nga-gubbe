@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles2.css" />
+    <title>Hänga Gubbe</title>
+  </head>
+  <body>
+    <div id="word-display"></div>
+    <div id="guesses"></div>
+    <figure id="hangman">
+      <img src="/img/hangman.svg" alt="Galgeberget" />
+    </figure>
+    <input type="text" id="guess-input" maxlength="1" />
+    <button id="guess-button">Gissa</button>
+    <div id="play-again-modal" class="modal">
+      <div class="modal-content">
+        <p>Vill du spela igen?</p>
+        <button id="yes-button">Ja</button>
+        <button id="no-button">Nej</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

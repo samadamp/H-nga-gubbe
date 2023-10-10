@@ -1,28 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Hänga Gubbe</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="grid-container">
-      <header><h1>Hangman</h1></header>
-      <div id="hangman"><img src="img/hangman.svg" alt=""></div>
+      <header><h1>Hangman Game</h1></header>
+      <div id="hangman"><img src="img/hangman.svg" alt="Hangman" /></div>
       <div id="word-display"></div>
       <div id="guesses"></div>
-    <input type="text" id="guess-input" maxlength="1">
-    <button id="guess-button">Gissa</button>
-    <div id="play-again-modal" class="modal">
-        <div class="modal-content">
-          <p>Vill du spela igen?</p>
-          <button id="yes-button">Ja</button>
-          <button id="no-button">Nej</button>
-        </div>
-      </div>
+      <input type="text" id="guess-input" maxlength="1" />
+      <button id="guess-button">Guess</button>
+      <p id="message"></p>
+      <button id="restart-button">Restart</button>
     </div>
     <script src="script.js"></script>
-
-</body>
+  </body>
 </html>

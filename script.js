@@ -22,6 +22,7 @@ function selectRandomWord() {
 
 
 
+
 let answer = document.querySelector("#guess-input")
 answer.addEventListener("keydown", (event) => {
 
@@ -29,3 +30,6 @@ answer.addEventListener("keydown", (event) => {
 
     
   });
+
+
+

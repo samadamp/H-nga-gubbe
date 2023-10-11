@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-function getUserInput(letter){
+
+function getUserInput(){
     let userInput = document.querySelector('#userInputField').value;
     
     const listItem = document.createElement('li') // <li>
@@ -7,7 +7,6 @@ function getUserInput(letter){
     document.querySelector("aside > ul").append(listItem)
 
 }
-=======
 // Skriv en bokstav i inputfältet och den skrivs ut i konsollen direkt
 // Gör om så att gissningen kontrollleras mot "ordet"
 //Om den finns i ordet => gör så att bokstav visas på rätt plats i ordet.
@@ -43,4 +42,3 @@ answer.addEventListener("keydown", (event) => {
 
 
 
->>>>>>> origin/Sams-branch

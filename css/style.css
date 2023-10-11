@@ -31,6 +31,8 @@ figure{
     /* justify-self: center; */
     padding: 15px;
     grid-row: span 2;
+    justify-self: end;
+    
 }
 section{
     display: flex;

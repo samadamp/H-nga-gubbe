@@ -107,12 +107,17 @@ function handleIncorrectGuess() {
 }
 
 // Function to end the game and show the result
+let showButton = document.querySelector("#play-again-button")
 function endGame(isWinner) {
     /* playAgainButton.style.display = "block"; */
     if (isWinner) {
         resultText.textContent = "You won!";
+        showButton.style.display = "block";
+        correctWordDisplay.textContent = `Congratulations you are the best`;
+        
     } else {
         resultText.textContent = "You lost!";
+        showButton.style.display = "block";
         correctWordDisplay.textContent = `The correct word was: ${randomWord}`;
     }
 }

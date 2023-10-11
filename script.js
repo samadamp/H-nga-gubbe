@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 // Define an array of words to choose from
 const words = ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew"];
 
@@ -177,4 +176,4 @@ resetTimer();
 
 
 
->>>>>>> JohanK
+

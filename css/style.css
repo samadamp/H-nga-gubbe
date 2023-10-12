@@ -1,8 +1,11 @@
 
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #f0f0f0;
+    text-align: center;
     margin: 0;
     padding: 0;
     width: 100vw;
@@ -12,13 +15,19 @@ body {
 }
 
 .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    max-width: 800px;
+    max-height: 700px;
     
-    max-width: 600px;
-    margin: 0 auto;
     padding: 10px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
     
 }
 span{
@@ -51,11 +60,7 @@ ul {
     padding: 0;
 }
 
-ul li {
-    display: inline-block;
-    margin-right: 5px;
-    font-size: 20px;
-}
+
 
 input[type="text"] {
     font-size: 24px;
@@ -86,22 +91,18 @@ button {
 
 
 #play-again-button{
-    /* width: 700px;
-    height: 500px; */
+    
     border-radius: 20px;
     padding: 1rem;
     background: #92c5f5;
     margin-bottom: 20px;
     color: black;
     box-shadow: 4px 4px;
-    /* margin: -100px */
-    /* position: absolute; */
-    /* top:22%;
-    left:20%; */
+    
 }
 
 .result h1{
-    margin-bottom: 200px;
+    margin-bottom: 100px;
     
 }
 
@@ -115,19 +116,17 @@ button {
     
     
 
-    /* border: 2px black solid; */
+    
     
 }
 
-/* .endOfGame{
-    display: block;
-}
- */
+
+
  .popbox{
     border: 2px solid black;
     max-width: 300px;
     padding: 2em;
     border-radius: 20px;
     box-shadow: 2px 2px 8px 8px rgb(238, 193, 193);
-    margin-left: 600px;
+    
  }

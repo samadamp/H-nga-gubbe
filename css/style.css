@@ -71,7 +71,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #69eb41;
 }
 
 #ground, #scaffold, #head, #body, #arms, #legs {
@@ -82,22 +82,27 @@ button:hover {
 #play-again-button{
     /* width: 700px;
     height: 500px; */
-    border-radius: 40%;
-    padding: 7rem;
+    border-radius: 20px;
+    padding: 1rem;
     display: none;
-    position: absolute;
+    margin-bottom: 20px;
+    /* margin: -100px */
+    /* position: absolute; */
     /* top:22%;
     left:20%; */
 }
 
+
 .result{
     display: flex;
+    flex-direction: column;
     justify-content:center ;
     align-items: center;
+    /* border: 2px black solid; */
+    
 }
 
-.endOfGame{
-
+/* .endOfGame{
+    display: block;
 }
-
-
+ */

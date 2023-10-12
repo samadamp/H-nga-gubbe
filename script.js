@@ -58,8 +58,6 @@ function makeGuess() {
             if (randomWord[i] === guess) {
                 correctGuesses[i] = true;
             }
-
-            
         }
         updateWordDisplay();
     } else {
@@ -126,21 +124,6 @@ function endGame(isWinner) {
 // Event listeners
 const guessButton = document.getElementById("guess-button");
 guessButton.addEventListener("click", makeGuess);
-
-
-/* playAgainButton.addEventListener("click", () => {
-    randomWord = words[Math.floor(Math.random() * words.length)];
-    correctGuesses = Array(randomWord.length).fill(false);
-    wrongGuesses = [];
-    incorrectGuesses = 0;
-    wrongGuessesDisplay.innerHTML = "";
-    updateWordDisplay();
-    updateHangman();
-    resultText.textContent = "";
-    correctWordDisplay.textContent = "";
-    playAgainButton.style.display = "none";
-    resetTimer();
-}); */
 
 // Page reload
 playAgainButton.addEventListener("click",() => 

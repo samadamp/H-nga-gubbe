@@ -109,23 +109,35 @@ function handleIncorrectGuess() {
 
 // Function to end the game and show the result
 let showButton = document.querySelector("#play-again-button")
+let hideEndOFGame = document.querySelector(".endOfGame")
 function endGame(isWinner) {
     /* playAgainButton.style.display = "block"; */
     if (isWinner) {
         resultText.textContent = "You won!";
         showButton.style.display = "block";
+        hideEndOFGame.style.display = "none";
         correctWordDisplay.textContent = `Congratulations you are the best`;
         
     } else {
         resultText.textContent = "You lost!";
         showButton.style.display = "block";
-        correctWordDisplay.textContent = `The correct word was: ${randomWord}`;
+        hideEndOFGame.style.display = "none";
+        correctWordDisplay.innerHTML = `The correct word was: <span> ${randomWord}`;
+        const html = '<span>The correct word was: <em>${randomWord}</em></span>';
+        correctWordDisplay.insertAdjacentHTML("afterbegin", html)
     }
 }
 
 // Event listeners
 const guessButton = document.getElementById("guess-button");
-guessButton.addEventListener("click", makeGuess);
+/* guessButton.addEventListener("click", makeGuess); */
+guessButton.addEventListener("keydown", makeGuess,(event) => {
+    if(event.keycode === 13){}
+})
+
+
+
+
 
 
 /* playAgainButton.addEventListener("click", () => {

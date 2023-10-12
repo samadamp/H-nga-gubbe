@@ -38,13 +38,27 @@ function updateWordDisplay() {
     
     }
 }
+
+
+
+const guessInput = document.getElementById("guess-input");
+guessInput.addEventListener("keydown",makeGuess,(event) => {
+    if(event.key === "Enter"){}})
 // Function to handle a guess
+
+
+
+
+
 function makeGuess() {
     const guessInput = document.getElementById("guess-input");
     const guess = guessInput.value.toLowerCase();
+    
+    
+            //Skapa en funktion som är enbart för varningar när man gör fel
             //Varningar som säger instruerar användaren att den gjort "fel"
     if (!/[a-z]/.test(guess)) {
-        alert("Please enter a single letter.");
+        /* alert("Please enter a single letter."); */
         guessInput.value = "";
         return;
     }
@@ -104,32 +118,33 @@ function handleIncorrectGuess() {
 }
 
 // Function to end the game and show the result
-let showButton = document.querySelector("#play-again-button")
-let hideEndOFGame = document.querySelector(".endOfGame")
+
+let hideEndOFGame = document.querySelector(".container")
+let showTitle = document.querySelector(".result")
 function endGame(isWinner) {
    
     if (isWinner) {
         resultText.textContent = "You won!";
-        showButton.style.display = "block";
         hideEndOFGame.style.display = "none";
+        showTitle.style.display = "block";
         correctWordDisplay.textContent = `Congratulations you are the best`;
         
     } else {
         resultText.textContent = "You lost!";
-        showButton.style.display = "block";
         hideEndOFGame.style.display = "none";
         correctWordDisplay.innerHTML = `The correct word was: <span> ${randomWord} </span> `;
-     
+        showTitle.style.display = "block";
+       
     }
 }
 
 // Event listeners
-const guessButton = document.getElementById("guess-button");
-guessButton.addEventListener("click", makeGuess);
-/*guessButton.addEventListener("keydown", makeGuess,(event) => {
-    if(event.keycode === 13){}
-})
-*/
+/* const guessButton = document.getElementById("guess-button");
+guessButton.addEventListener("click", makeGuess); */
+
+
+
+
 
 
 

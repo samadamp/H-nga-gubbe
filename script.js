@@ -22,7 +22,7 @@ const playAgainButton = document.getElementById("play-again-button");
 
 
 // Starta timern när spelet börjar
-
+// ev skapa en startknapp som triggas av klick??
 startTimer();
 updateWordDisplay(); // startar spelet
 // Function to update the word display

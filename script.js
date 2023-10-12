@@ -35,9 +35,7 @@ function updateWordDisplay() {
         } else {
             wordDisplay.innerHTML += " _ ";
         }
-       /*  if (i < randomWord.length - 1) {
-            wordDisplay.innerHTML += " "; // Lägg till ett mellanrum om vi inte är på den sista bokstaven
-        } */
+    
     }
 }
 // Function to handle a guess
@@ -109,7 +107,7 @@ function handleIncorrectGuess() {
 let showButton = document.querySelector("#play-again-button")
 let hideEndOFGame = document.querySelector(".endOfGame")
 function endGame(isWinner) {
-    /* playAgainButton.style.display = "block"; */
+   
     if (isWinner) {
         resultText.textContent = "You won!";
         showButton.style.display = "block";
@@ -120,19 +118,18 @@ function endGame(isWinner) {
         resultText.textContent = "You lost!";
         showButton.style.display = "block";
         hideEndOFGame.style.display = "none";
-        correctWordDisplay.innerHTML = `The correct word was: <span> ${randomWord}`;
-        const html = '<span>The correct word was: <em>${randomWord}</em></span>';
-        correctWordDisplay.insertAdjacentHTML("afterbegin", html)
+        correctWordDisplay.innerHTML = `The correct word was: <span> ${randomWord} </span> `;
+     
     }
 }
 
 // Event listeners
 const guessButton = document.getElementById("guess-button");
-/* guessButton.addEventListener("click", makeGuess); */
-guessButton.addEventListener("keydown", makeGuess,(event) => {
+guessButton.addEventListener("click", makeGuess);
+/*guessButton.addEventListener("keydown", makeGuess,(event) => {
     if(event.keycode === 13){}
 })
-
+*/
 
 
 

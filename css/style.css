@@ -4,7 +4,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
+    background: linear-gradient(#81a7f8,#c2d3f8, #f394cf) ;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -22,9 +22,9 @@ body {
     margin: 0;
     max-width: 800px;
     padding: 10px;
-    background-color: #fff;
+    background: linear-gradient(#f394cf,#c2d3f8, #81a7f8) ;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 22, 22, 0.1);
     
     
 }
@@ -49,20 +49,24 @@ h1 {
 }
 
 .guesses p {
-    font-size: 18px;
+    font-size: 25px;
     margin: 10px 0;
 }
 
 ul {
     list-style: none;
     padding: 0;
+    font-size: 20px;
 }
 
 input[type="text"] {
     font-size: 24px;
     padding: 5px;
     text-align: center;
+    background:linear-gradient(#c2d3f8, #f394cf);
+
 }
+
 
 button {
     font-size: 30px;
@@ -76,7 +80,7 @@ button {
 }
 
 #play-again-button:hover {
-    background-color: #91d47d;
+    background: linear-gradient(#c2d3f8, #f394cf) ;
 }
 
 #ground, #scaffold, #head, #body, #arms, #legs {
@@ -88,7 +92,7 @@ button {
     
     border-radius: 20px;
     padding: 1rem;
-    background: #92c5f5;
+    background: linear-gradient(#81a7f8,#c2d3f8, #f394cf) ;
     margin-bottom: 20px;
     color: black;
     box-shadow: 4px 4px;
@@ -121,6 +125,6 @@ button {
     max-width: 300px;
     padding: 2em;
     border-radius: 20px;
-    box-shadow: 2px 2px 8px 8px rgb(238, 193, 193);
+    box-shadow: 2px 2px 8px 8px rgb(241, 191, 248);
     
  }

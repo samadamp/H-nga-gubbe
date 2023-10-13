@@ -64,10 +64,15 @@ function makeGuess() {
     } else if (randomWord.includes(guess)) {
         for (let i = 0; i < randomWord.length; i++) {
             if (randomWord[i] === guess) {
+                if (!correctGuesses[i]){
                 correctGuesses[i] = true;
+                updateWordDisplay();
+            }
+            else{
+                alert("You've already guessed that letter.")
+            }
             }
         }
-        updateWordDisplay();
     } else {
         wrongGuesses.push(guess);
         incorrectGuesses++;

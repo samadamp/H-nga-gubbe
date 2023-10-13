@@ -42,8 +42,8 @@ function updateWordDisplay() {
 // Eventlistener: trycka enter för att gissa på en bokstav
 
 const guessInput = document.getElementById("guess-input");
-guessInput.addEventListener("keydown",makeGuess,(event) => {
-    if(event.key === "Enter"){}})
+guessInput.addEventListener("keydown",(event) => {
+    if(event.key === "Enter"){makeGuess()}})
 
 
 // Funktion för hantering av gissningar.
@@ -54,7 +54,7 @@ function makeGuess() {
           
             //Varningar som säger instruerar användaren att den gjort "fel"
     if (!/[a-z]/.test(guess)) {
-        /* alert("Please enter a single letter."); */
+        alert("Please enter a single letter.");
         guessInput.value = "";
         return;
     }

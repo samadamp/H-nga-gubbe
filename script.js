@@ -72,7 +72,7 @@ function makeGuess() {
         wrongGuesses.push(guess);
         incorrectGuesses++;
         wrongGuessesDisplay.innerHTML = wrongGuesses.join(", ");
-        handleIncorrectGuess();
+        //handleIncorrectGuess();
         updateHangman();
         
     }
@@ -87,14 +87,9 @@ function makeGuess() {
 }
 
 
-//Funktion för att uppdatera bilden. Den fungerar inte
-function updateHangman() {
-    hangmanImage.src = `./img/hangman${incorrectGuesses}.svg`;
-}
-
 // Funktion för att uppdatera bilden när användaren gissar fel.
 // Skulle ev kunna göras om till en switch.
-function handleIncorrectGuess() {
+function updateHangman() {
    
     if (incorrectGuesses === 1) {
         document.getElementById("ground").style.display = "block";

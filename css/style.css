@@ -1,4 +1,6 @@
-
+*{
+    box-sizing: border-box;
+}
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -46,22 +48,25 @@ h1 {
 .word {
     font-size: 24px;
     margin: 20px 0;
-}
+} 
 
-.guesses p {
+.box p {
     font-size: 18px;
     margin: 10px 0;
-}
-
-ul {
-    list-style: none;
     padding: 0;
+} 
+.box{
+   padding: 20px;
+}
+#wrong-guesses{
+    text-transform: uppercase;
 }
 
 input[type="text"] {
     font-size: 24px;
     padding: 5px;
     text-align: center;
+    margin: 20px 0;
 }
 
 button {

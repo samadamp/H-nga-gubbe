@@ -11,7 +11,7 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="container">
+    <main class="container">
       <h1>Hangman</h1>
       <figure class="hangman">
         <svg
@@ -58,11 +58,11 @@
         </svg>
       </figure>
 
-      <div id="timer">01:00</div>
-      <div class="word" id="word-display"></div>
-      <div class="guesses">
+      <p id="timer">01:00</p>
+      <p class="word" id="word-display"></p>
+      <div class="box">
         <p>Wrong guesses:</p>
-        <ul id="wrong-guesses"></ul>
+        <p id="wrong-guesses"></p>
       </div>
       <input
         type="text"
@@ -70,14 +70,14 @@
         maxlength="1"
         placeholder="Guess a letter" />
       <!-- <button id="guess-button">Guess</button> -->
-    </div>
-    <div class="result">
+    </main>
+    <aside class="result">
       <h1>Hangman</h1>
       <div class="popbox">
         <p id="result-text"></p>
         <p id="correct-word"></p>
         <button id="play-again-button">Play again?</button>
       </div>
-    </div>
+    </aside>
   </body>
 </html>

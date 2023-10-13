@@ -24,7 +24,7 @@ const playAgainButton = document.getElementById("play-again-button");
 // Starta timern när spelet börjar
 // ev skapa en startknapp som triggas av klick??
 //ändring
-startTimer();
+//startTimer();
 updateWordDisplay(); // startar spelet
 // Function to update the word display
 function updateWordDisplay() {
@@ -39,23 +39,19 @@ function updateWordDisplay() {
     }
 }
 
-
+// Eventlistener: trycka enter för att gissa på en bokstav
 
 const guessInput = document.getElementById("guess-input");
 guessInput.addEventListener("keydown",makeGuess,(event) => {
     if(event.key === "Enter"){}})
-// Function to handle a guess
 
 
-
-
-
+// Funktion för hantering av gissningar.
+//Skapa en funktion som är enbart för varningar när man gör fel
 function makeGuess() {
     const guessInput = document.getElementById("guess-input");
     const guess = guessInput.value.toLowerCase();
-    
-    
-            //Skapa en funktion som är enbart för varningar när man gör fel
+          
             //Varningar som säger instruerar användaren att den gjort "fel"
     if (!/[a-z]/.test(guess)) {
         /* alert("Please enter a single letter."); */
@@ -90,16 +86,16 @@ function makeGuess() {
     }
 }
 
-// Function to update the hangman image
+
+//Funktion för att uppdatera bilden. Den fungerar inte
 function updateHangman() {
     hangmanImage.src = `./img/hangman${incorrectGuesses}.svg`;
 }
 
-// Använd denna funktion när användaren gissar fel
+// Funktion för att uppdatera bilden när användaren gissar fel.
+// Skulle ev kunna göras om till en switch.
 function handleIncorrectGuess() {
-    // Öka antalet felgissningar
-
-// Här är en enkel logik för att visa respektive del av bilden när användaren gissar fel
+   
     if (incorrectGuesses === 1) {
         document.getElementById("ground").style.display = "block";
     } else if (incorrectGuesses === 2) {
@@ -117,10 +113,10 @@ function handleIncorrectGuess() {
     }
 }
 
-// Function to end the game and show the result
-
+// Funktion för att avsluta spelet och visa resultatet
 let hideEndOFGame = document.querySelector(".container")
 let showTitle = document.querySelector(".result")
+
 function endGame(isWinner) {
    
     if (isWinner) {
@@ -138,21 +134,16 @@ function endGame(isWinner) {
     }
 }
 
-// Event listeners
+// Event listeners för den tidigare gissningknappen. Just nu bortkommenterad i html.
 /* const guessButton = document.getElementById("guess-button");
 guessButton.addEventListener("click", makeGuess); */
 
 
-
-
-
-
-
-
-// Page reload
+// Eventlistener som gör en Page reload vid tryck på playagain-knappen
 playAgainButton.addEventListener("click",() => 
 {window.location.reload()})
 
+//Funktion för att starta timer
 function startTimer() {
     timerInterval = setInterval(function() {
         if (timeLeft <= 0) {
@@ -175,6 +166,8 @@ function startTimer() {
     }, 1000); // Uppdatera varje sekund
 }
 
+//Funktion för att återställa timer. Starta den igen.
+// Ev överflöodig pga pageReload.
 function resetTimer() {
     clearInterval(timerInterval);
     timeLeft = 60; // Återställ till 1 minut

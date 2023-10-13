@@ -42,8 +42,8 @@ function updateWordDisplay() {
 // Eventlistener: trycka enter för att gissa på en bokstav
 
 const guessInput = document.getElementById("guess-input");
-guessInput.addEventListener("keydown",makeGuess,(event) => {
-    if(event.key === "Enter"){}})
+guessInput.addEventListener("keydown",(event) => {
+    if(event.key === "Enter"){makeGuess()}})
 
 
 // Funktion för hantering av gissningar.
@@ -54,7 +54,7 @@ function makeGuess() {
           
             //Varningar som säger instruerar användaren att den gjort "fel"
     if (!/[a-z]/.test(guess)) {
-        /* alert("Please enter a single letter."); */
+        alert("Please enter a single letter.");
         guessInput.value = "";
         return;
     }
@@ -138,28 +138,28 @@ playAgainButton.addEventListener("click",() =>
 {window.location.reload()})
 
 //Funktion för att starta timer
-// function startTimer() {
-//     timerInterval = setInterval(function() {
-//         if (timeLeft <= 0) {
-//             // Tiden har tagit slut, användaren förlorar
-//             clearInterval(timerInterval);
-//             endGame();
-//             // Lägg till din logik för förlust här
-//         } else {
-//             // Konvertera tiden till formatet mm:ss
-//             const minutes = Math.floor(timeLeft / 60);
-//             const seconds = timeLeft  %60;
-//             const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+/* function startTimer() {
+    timerInterval = setInterval(function() {
+        if (timeLeft <= 0) {
+            // Tiden har tagit slut, användaren förlorar
+            clearInterval(timerInterval);
+            endGame();
+            // Lägg till din logik för förlust här
+        } else {
+            // Konvertera tiden till formatet mm:ss
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft  %60;
+            const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
             
 //             // Uppdatera visningen av tiden
 //             document.getElementById("timer").textContent = timeString;
 
-//             // Minska tiden med 1 sekund
-//             timeLeft--;
-//         }
-//     }, 1000); // Uppdatera varje sekund
-// }
-
+            // Minska tiden med 1 sekund
+            timeLeft--;
+        }
+    }, 1000); // Uppdatera varje sekund
+}
+ */
 //Funktion för att återställa timer. Starta den igen.
 // Ev överflöodig pga pageReload.
 function resetTimer() {

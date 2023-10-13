@@ -72,7 +72,6 @@ function makeGuess() {
         wrongGuesses.push(guess);
         incorrectGuesses++;
         wrongGuessesDisplay.innerHTML = wrongGuesses.join(", ");
-        //handleIncorrectGuess();
         updateHangman();
         
     }

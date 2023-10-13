@@ -1,6 +1,7 @@
 *{
     box-sizing: border-box;
 }
+/* Body styling*/
 body {
     font-family: Arial, sans-serif;
     display: flex;

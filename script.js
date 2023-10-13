@@ -138,7 +138,7 @@ playAgainButton.addEventListener("click",() =>
 {window.location.reload()})
 
 //Funktion för att starta timer
-function startTimer() {
+/* function startTimer() {
     timerInterval = setInterval(function() {
         if (timeLeft <= 0) {
             // Tiden har tagit slut, användaren förlorar
@@ -159,7 +159,7 @@ function startTimer() {
         }
     }, 1000); // Uppdatera varje sekund
 }
-
+ */
 //Funktion för att återställa timer. Starta den igen.
 // Ev överflöodig pga pageReload.
 function resetTimer() {

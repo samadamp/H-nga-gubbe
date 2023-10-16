@@ -8,7 +8,8 @@ let randomWord = words[Math.floor(Math.random() * words.length)];
 // Track the current state of the game
 let correctGuesses = Array(randomWord.length).fill(false);
 let wrongGuesses = [];
-let incorrectGuesses = 0;
+const correctGuessedLetters = []
+let incorrectGuesses = 0; // namnförslag: wrongGuessCount
 let timeLeft = 60; // 1 minut i sekunder
 let timerInterval;
 
@@ -17,14 +18,14 @@ const wordDisplay = document.getElementById("word-display");
 const wrongGuessesDisplay = document.getElementById("wrong-guesses");
 const hangmanImage = document.querySelector(".hangman svg");
 const resultText = document.getElementById("result-text");
-const correctWordDisplay = document.getElementById("correct-word");
+const popUpBox = document.getElementById("correct-word");
 const playAgainButton = document.getElementById("play-again-button");
 
 
 // Starta timern när spelet börjar
-startTimer();
+//startTimer();
 updateWordDisplay(); // startar spelet
-// Function to update the word display
+// Funktion för att visa
 function updateWordDisplay()
 {
     wordDisplay.innerHTML = "";
@@ -38,8 +39,7 @@ function updateWordDisplay()
     }
 }
 
-// Eventlistener: trycka enter för att gissa på en bokstav
-
+// Eventlistener: tryck enter för att gissa på en bokstav
 const guessInput = document.getElementById("guess-input");
 guessInput.addEventListener("keydown",(event) => {
     if(event.key === "Enter"){makeGuess()}})
@@ -47,7 +47,7 @@ guessInput.addEventListener("keydown",(event) => {
    
 
 
-const correctGuessedLetters = []
+
 // Funktion för hantering av gissningar.
 function makeGuess()
 {
@@ -141,16 +141,16 @@ let showTitle = document.querySelector(".result")
 function endGame(isWinner) {
    
     if (isWinner) {
-        resultText.textContent = "You won!";
+        resultText.innerText = "You won!";
         hideEndOFGame.style.display = "none";
         showTitle.style.display = "block";
-        correctWordDisplay.innerHTML = `Congratulations you are the best!
+        popUpBox.innerHTML = `Congratulations you are the best!
         The word was <span> ${randomWord}! </span>`;
         
     } else {
-        resultText.textContent = "You lost!";
+        resultText.innerText = "You lost!";
         hideEndOFGame.style.display = "none";
-        correctWordDisplay.innerHTML = `The correct word was: <span> ${randomWord} </span> `;
+        popUpBox.innerHTML = `The correct word was: <span> ${randomWord} </span> `;
         showTitle.style.display = "block";
        
     }
@@ -169,10 +169,7 @@ playAgainButton.addEventListener("click",() =>
  function startTimer() {
     timerInterval = setInterval(function() {
         if (timeLeft <= 0) {
-            // Tiden har tagit slut, användaren förlorar
-            //clearInterval(timerInterval);
             endGame();
-            // Lägg till din logik för förlust här
         } else {
             // Konvertera tiden till formatet mm:ss
             const minutes = Math.floor(timeLeft / 60);

@@ -185,14 +185,7 @@ playAgainButton.addEventListener("click",() =>
     }, 1000); // Uppdatera varje sekund
 }
  
-//Funktion för att återställa timer. Starta den igen.
-// Ev överflöodig pga pageReload.
-function resetTimer() {
-    clearInterval(timerInterval);
-    timeLeft = 60; // Återställ till 1 minut
-    startTimer(); // Starta om timern
-}
-//resetTimer();
+
 
 
 

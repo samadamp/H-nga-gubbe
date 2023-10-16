@@ -120,3 +120,12 @@ button {
     box-shadow: 2px 2px 8px 8px rgb(241, 191, 248);
     
  }
+
+ .hiddenImgUntillLose {
+    display: none;
+}
+
+.hiddenImgUntillWin {
+    display: none;
+}
+

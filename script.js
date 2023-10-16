@@ -122,8 +122,7 @@ function updateHangman() {
             break;
         case 6:
             document.getElementById("legs").style.display = "block";
-            // Användaren har förlorat
-            // Visa förlorad meddelande eller hantera spelet som du önskar
+            
             break;
       
     }

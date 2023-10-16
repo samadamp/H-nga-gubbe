@@ -20,7 +20,20 @@ const hangmanImage = document.querySelector(".hangman svg");
 const resultText = document.getElementById("result-text");
 const popUpBox = document.getElementById("correct-word");
 const playAgainButton = document.getElementById("play-again-button");
+const guessInput = document.getElementById("guess-input");
+let hideEndOFGame = document.querySelector(".container")
+let showTitle = document.querySelector(".result")
 
+// Eventlisteners
+playAgainButton.addEventListener("click",() => 
+{window.location.reload()})
+
+guessInput.addEventListener("keydown",(event) =>
+{if(event.key === "Enter"){makeGuess()}})
+   
+// Event listeners för den tidigare gissningknappen. Just nu bortkommenterad i html.
+/* const guessButton = document.getElementById("guess-button");
+guessButton.addEventListener("click", makeGuess); */ 
 
 // Starta timern när spelet börjar
 //startTimer();
@@ -38,15 +51,6 @@ function updateWordDisplay()
     
     }
 }
-
-// Eventlistener: tryck enter för att gissa på en bokstav
-const guessInput = document.getElementById("guess-input");
-guessInput.addEventListener("keydown",(event) => {
-    if(event.key === "Enter"){makeGuess()}})
-
-   
-
-
 
 // Funktion för hantering av gissningar.
 function makeGuess()
@@ -93,8 +97,6 @@ function makeGuess()
     }
 }
 
-
-
 function isValidGuess(guess)
 {
 
@@ -135,9 +137,6 @@ function updateHangman() {
 }
 
 // Funktion för att avsluta spelet och visa resultatet
-let hideEndOFGame = document.querySelector(".container")
-let showTitle = document.querySelector(".result")
-
 function endGame(isWinner) {
    
     if (isWinner) {
@@ -155,15 +154,6 @@ function endGame(isWinner) {
        
     }
 }
-
-// Event listeners för den tidigare gissningknappen. Just nu bortkommenterad i html.
-/* const guessButton = document.getElementById("guess-button");
-guessButton.addEventListener("click", makeGuess); */
-
-
-// Eventlistener som gör en Page reload vid tryck på playagain-knappen
-playAgainButton.addEventListener("click",() => 
-{window.location.reload()})
 
 //Funktion för att starta timer
  function startTimer() {

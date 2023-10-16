@@ -8,7 +8,8 @@ let randomWord = words[Math.floor(Math.random() * words.length)];
 // Track the current state of the game
 let correctGuesses = Array(randomWord.length).fill(false);
 let wrongGuesses = [];
-let incorrectGuesses = 0;
+const correctGuessedLetters = []
+let incorrectGuesses = 0; // namnförslag: wrongGuessCount
 let timeLeft = 60; // 1 minut i sekunder
 let timerInterval;
 
@@ -17,17 +18,16 @@ const wordDisplay = document.getElementById("word-display");
 const wrongGuessesDisplay = document.getElementById("wrong-guesses");
 const hangmanImage = document.querySelector(".hangman svg");
 const resultText = document.getElementById("result-text");
-const correctWordDisplay = document.getElementById("correct-word");
+const popUpBox = document.getElementById("correct-word");
 const playAgainButton = document.getElementById("play-again-button");
 
 
 // Starta timern när spelet börjar
-// ev skapa en startknapp som triggas av klick??
-//ändring
 //startTimer();
 updateWordDisplay(); // startar spelet
-// Function to update the word display
-function updateWordDisplay() {
+// Funktion för att visa
+function updateWordDisplay()
+{
     wordDisplay.innerHTML = "";
     for (let i = 0; i < randomWord.length; i++) {
         if (correctGuesses[i]) {
@@ -39,48 +39,51 @@ function updateWordDisplay() {
     }
 }
 
-// Eventlistener: trycka enter för att gissa på en bokstav
-
+// Eventlistener: tryck enter för att gissa på en bokstav
 const guessInput = document.getElementById("guess-input");
 guessInput.addEventListener("keydown",(event) => {
     if(event.key === "Enter"){makeGuess()}})
 
+   
+
+
 
 // Funktion för hantering av gissningar.
-//Skapa en funktion som är enbart för varningar när man gör fel
-function makeGuess() {
-    const guessInput = document.getElementById("guess-input");
-    const guess = guessInput.value.toLowerCase();
-          
-            //Varningar som säger instruerar användaren att den gjort "fel"
-    if (!/[a-z]/.test(guess)) {
-        alert("Please enter a single letter.");
-        guessInput.value = "";
-        return;
+function makeGuess()
+{
+   const guess = guessInput.value.toLowerCase();
+    if (!isValidGuess(guess))
+    {
+        return // ej giltlig gissning - avbryt gissning.
     }
-        //correctguess om man tar samma igen funkar ej
-    if (correctGuesses.includes(guess) || wrongGuesses.includes(guess)) {
-        alert("You've already guessed that letter.");
-    } else if (randomWord.includes(guess)) {
+    if (randomWord.includes(guess)) {
+        
         for (let i = 0; i < randomWord.length; i++) {
-            if (randomWord[i] === guess) {
-                if (!correctGuesses[i]){
-                correctGuesses[i] = true;
-                updateWordDisplay();
-            }
-            else{
-                alert("You've already guessed that letter.")
-            }
+           
+            if (randomWord[i] === guess) 
+            {
+                if (!correctGuesses[i])
+                {
+                    correctGuesses[i] = true;
+                    updateWordDisplay();
+                    correctGuessedLetters.push(guess)
+                    console.log(`rätt gissningar`, correctGuessedLetters) //fungerar
+                }
+            
+
             }
         }
-    } else {
+    } 
+    else 
+    {
         wrongGuesses.push(guess);
+        console.log(`fel gissningar`, wrongGuesses)
         incorrectGuesses++;
         wrongGuessesDisplay.innerHTML = wrongGuesses.join(", ");
         updateHangman();
         
     }
-
+    
     guessInput.value = "";
 
     if (incorrectGuesses >= 6) {
@@ -90,6 +93,25 @@ function makeGuess() {
     }
 }
 
+
+
+function isValidGuess(guess)
+{
+
+    if(!/[a-z]/.test(guess))
+    {
+        alert("Please enter a single letter between a and z.")
+        return false // gissningen ej giltlig returnera false och ge en alert
+    }
+    if(correctGuessedLetters.includes(guess) || wrongGuesses.includes(guess))
+    {
+        alert("You've already guessed that letter.")
+        return false // gissningen ej giltlig returnera false och ge en alert
+    }
+    return true
+   
+
+}
 
 // Funktion för att uppdatera bilden när användaren gissar fel.
 // Skulle ev kunna göras om till en switch.
@@ -119,15 +141,16 @@ let showTitle = document.querySelector(".result")
 function endGame(isWinner) {
    
     if (isWinner) {
-        resultText.textContent = "You won!";
+        resultText.innerText = "You won!";
         hideEndOFGame.style.display = "none";
         showTitle.style.display = "block";
-        correctWordDisplay.textContent = `Congratulations you are the best`;
+        popUpBox.innerHTML = `Congratulations you are the best!
+        The word was <span> ${randomWord}! </span>`;
         
     } else {
-        resultText.textContent = "You lost!";
+        resultText.innerText = "You lost!";
         hideEndOFGame.style.display = "none";
-        correctWordDisplay.innerHTML = `The correct word was: <span> ${randomWord} </span> `;
+        popUpBox.innerHTML = `The correct word was: <span> ${randomWord} </span> `;
         showTitle.style.display = "block";
        
     }
@@ -143,28 +166,25 @@ playAgainButton.addEventListener("click",() =>
 {window.location.reload()})
 
 //Funktion för att starta timer
-/* function startTimer() {
+ function startTimer() {
     timerInterval = setInterval(function() {
         if (timeLeft <= 0) {
-            // Tiden har tagit slut, användaren förlorar
-            clearInterval(timerInterval);
             endGame();
-            // Lägg till din logik för förlust här
         } else {
             // Konvertera tiden till formatet mm:ss
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft  %60;
             const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
             
-//             // Uppdatera visningen av tiden
-//             document.getElementById("timer").textContent = timeString;
+            // Uppdatera visningen av tiden
+             document.getElementById("timer").textContent = timeString;
 
             // Minska tiden med 1 sekund
             timeLeft--;
         }
     }, 1000); // Uppdatera varje sekund
 }
- */
+ 
 //Funktion för att återställa timer. Starta den igen.
 // Ev överflöodig pga pageReload.
 function resetTimer() {
@@ -172,7 +192,7 @@ function resetTimer() {
     timeLeft = 60; // Återställ till 1 minut
     startTimer(); // Starta om timern
 }
-resetTimer();
+//resetTimer();
 
 
 

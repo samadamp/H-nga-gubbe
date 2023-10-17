@@ -65,7 +65,8 @@ input[type="text"] {
     padding: 5px;
     text-align: center;
     margin: 20px 0;
-    background:linear-gradient(#c2d3f8, #f394cf);
+    background:linear-gradient(#93b1f1, #f394cf);
+    border-radius: 20px;
 }
 
 
@@ -87,7 +88,15 @@ button {
     display: none;
 }
 
+#startTimer{
+    border-radius: 30px;
+    padding: 1.5rem;
+    background: linear-gradient(#f394cf,#c2d3f8, #81a7f8) ;
+    margin-bottom: 20px;
+    color: black;
+    box-shadow: 2px 2px;
 
+}
 #play-again-button{
     
     border-radius: 20px;

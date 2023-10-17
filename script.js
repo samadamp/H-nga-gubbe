@@ -13,6 +13,7 @@ let incorrectGuesses = 0; // namnförslag: wrongGuessCount
 let timeLeft = 60; // 1 minut i sekunder
 let timerInterval;
 
+
 // DOM elements
 const wordDisplay = document.getElementById("word-display");
 const wrongGuessesDisplay = document.getElementById("wrong-guesses");
@@ -23,7 +24,7 @@ const playAgainButton = document.getElementById("play-again-button");
 const guessInput = document.getElementById("guess-input");
 let hideEndOFGame = document.querySelector(".container")
 let showTitle = document.querySelector(".result")
-
+let timerButton = document.querySelector("#startTimer")
 // Eventlisteners
 playAgainButton.addEventListener("click",() => 
 {window.location.reload()})
@@ -35,8 +36,6 @@ guessInput.addEventListener("keydown",(event) =>
 /* const guessButton = document.getElementById("guess-button");
 guessButton.addEventListener("click", makeGuess); */ 
 
-// Starta timern när spelet börjar
-//startTimer();
 updateWordDisplay(); // startar spelet
 // Funktion för att visa
 function updateWordDisplay()
@@ -153,15 +152,14 @@ function endGame(isWinner) {
         showTitle.style.display = "block";
        
     }
+    clearInterval(timerInterval) // Denna funktion stoppar timern
 }
 
-//Funktion för att starta timer
- function startTimer() {
-    timerInterval = setInterval(function() {
-        if (timeLeft <= 0) {
-            endGame();
-        } else {
-            // Konvertera tiden till formatet mm:ss
+ 
+ timerButton.addEventListener("click", timer)
+function timer() {
+        timerInterval = setInterval(function() 
+        {
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft  %60;
             const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
@@ -171,11 +169,15 @@ function endGame(isWinner) {
 
             // Minska tiden med 1 sekund
             timeLeft--;
-        }
-    }, 1000); // Uppdatera varje sekund
-}
- 
+         if(timeLeft < 0)
+        {
+            endGame()
 
+        }
+        }, 1000); // Uppdatera varje sekund
+
+       
+}
 
 
 

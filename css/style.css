@@ -80,9 +80,6 @@ button {
     cursor: pointer;
 }
 
-#play-again-button:hover {
-    background: linear-gradient(#c2d3f8, #f394cf) ;
-}
 
 #ground, #scaffold, #head, #body, #arms, #legs {
     display: none;
@@ -94,8 +91,14 @@ button {
     background: linear-gradient(#f394cf,#c2d3f8, #81a7f8) ;
     margin-bottom: 20px;
     color: black;
-    box-shadow: 2px 2px;
+    box-shadow: 2px 2px;   
+}
+#startTimer:hover{
+    background: linear-gradient(#c2d3f8, #f394cf) ;
+}
 
+#play-again-button:hover {
+    background: linear-gradient(#c2d3f8, #f394cf) ;
 }
 #play-again-button{
     

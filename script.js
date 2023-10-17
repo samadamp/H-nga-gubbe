@@ -143,7 +143,7 @@ playAgainButton.addEventListener("click",() =>
 {window.location.reload()})
 
 //Funktion för att starta timer
-/* function startTimer() {
+function startTimer() {
     timerInterval = setInterval(function() {
         if (timeLeft <= 0) {
             // Tiden har tagit slut, användaren förlorar
@@ -157,14 +157,14 @@ playAgainButton.addEventListener("click",() =>
             const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
             
 //             // Uppdatera visningen av tiden
-//             document.getElementById("timer").textContent = timeString;
+             document.getElementById("timer").textContent = timeString;
 
             // Minska tiden med 1 sekund
             timeLeft--;
         }
     }, 1000); // Uppdatera varje sekund
 }
- */
+
 //Funktion för att återställa timer. Starta den igen.
 // Ev överflöodig pga pageReload.
 function resetTimer() {

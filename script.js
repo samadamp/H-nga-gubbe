@@ -5,7 +5,7 @@ const words = ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape"
 // Väljer ett random ord från lista
 let randomWord = words[Math.floor(Math.random() * words.length)];
 
-// Track the current state of the game
+// variablar i olika former
 let correctGuesses = Array(randomWord.length).fill(false);
 let wrongGuesses = [];
 const correctGuessedLetters = []
@@ -79,7 +79,7 @@ function makeGuess()
                     correctGuesses[i] = true;
                     updateWordDisplay();
                     correctGuessedLetters.push(guess)
-                    console.log(`rätt gissningar`, correctGuessedLetters) //fungerar
+                    console.log(`rätt gissningar`, correctGuessedLetters) 
                 }
             
 

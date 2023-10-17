@@ -22,8 +22,8 @@ const resultText = document.getElementById("result-text");
 const popUpBox = document.getElementById("correct-word");
 const playAgainButton = document.getElementById("play-again-button");
 const guessInput = document.getElementById("guess-input");
-let hideEndOFGame = document.querySelector(".container")
-let showTitle = document.querySelector(".result")
+let hideContainer = document.querySelector(".container")
+let resultScreen = document.querySelector(".result")
 let timerButton = document.querySelector("#startTimer")
 
 // Eventlisteners
@@ -35,7 +35,7 @@ guessInput.addEventListener("keydown",(event) =>
 
 // Du kan även trycka enter för att köra playagian
 document.addEventListener("keydown", function(event) {
-    if (event.key === "Enter" && showTitle.style.display === "block") {
+    if (event.key === "Enter" && resultScreen.style.display === "block") {
         // Kontrollera om popup-rutan är uppe
         if (document.activeElement !== guessInput) {
             window.location.reload();
@@ -158,8 +158,8 @@ function endGame(isWinner) {
    
     if (isWinner) {
         resultText.innerText = "You won!";
-        hideEndOFGame.style.display = "none";
-        showTitle.style.display = "block";
+        hideContainer.style.display = "none";
+        resultScreen.style.display = "block";
       
         winSound.play();
         winSound2.play();
@@ -169,9 +169,9 @@ function endGame(isWinner) {
         
     } else {
         resultText.innerText = "You lost!";
-        hideEndOFGame.style.display = "none";
+        hideContainer.style.display = "none";
         popUpBox.innerHTML = `The correct word was: <span> ${randomWord} </span> `;
-        showTitle.style.display = "block";
+        resultScreen.style.display = "block";
         loseSound.play();
         loseSound2.play();
         loseImg.classList.remove("hiddenImgUntillLose");

@@ -25,16 +25,15 @@ const guessInput = document.getElementById("guess-input");
 let hideEndOFGame = document.querySelector(".container")
 let showTitle = document.querySelector(".result")
 let timerButton = document.querySelector("#startTimer")
+
 // Eventlisteners
 playAgainButton.addEventListener("click",() => 
 {window.location.reload()})
 
 guessInput.addEventListener("keydown",(event) =>
 {if(event.key === "Enter"){makeGuess()}})
-   
-// Event listeners för den tidigare gissningknappen. Just nu bortkommenterad i html.
-/* const guessButton = document.getElementById("guess-button");
-guessButton.addEventListener("click", makeGuess); */ 
+
+timerButton.addEventListener("click", timer)
 
 updateWordDisplay(); // startar spelet
 // Funktion för att visa
@@ -155,8 +154,6 @@ function endGame(isWinner) {
     clearInterval(timerInterval) // Denna funktion stoppar timern
 }
 
- 
- timerButton.addEventListener("click", timer)
 function timer() {
         timerInterval = setInterval(function() 
         {

@@ -57,8 +57,9 @@
             fill="black" />
         </svg>
       </figure>
-
-      <p id="timer">01:00</p>
+      <button id="startTimer">Spela med timer</button>
+      <p id="timer"></p>
+      <!--01:00-->
       <p class="word" id="word-display"></p>
       <div class="box">
         <p>Wrong guesses:</p>
@@ -69,14 +70,31 @@
         id="guess-input"
         maxlength="1"
         placeholder="Guess a letter" />
-      <!-- <button id="guess-button">Guess</button> -->
     </main>
+    <img id="loseImg" src="./img/hangman.svg" alt="loseImg" class="hiddenImgUntillLose">
+
+    <img id="winImg" src="./img/paro-AL-happy.svg" alt="winImg" class="hiddenImgUntillWin">
+
     <aside class="result">
       <h1>Hangman</h1>
       <div class="popbox">
         <p id="result-text"></p>
         <p id="correct-word"></p>
         <button id="play-again-button">Play again?</button>
+        <audio id="winSound">
+          <source src="./sound/short-crowd-cheer-6713.mp3" type="audio/mpeg">
+        </audio>
+      <audio id="winSound2">
+          <source src="./sound/tropical-summer-background-vlog-music-156216.mp3" type="audio/mpeg">
+          
+        </audio>
+        
+        <audio id="loseSound">
+          <source src="./sound/booohwav-14768.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="loseSound2">
+          <source src="./sound/emotional-piano-sad-background-music-for-videos-5688.mp3" type="audio/mpeg">
+        </audio>
       </div>
     </aside>
   </body>

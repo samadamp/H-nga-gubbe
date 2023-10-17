@@ -13,6 +13,7 @@ let incorrectGuesses = 0; // namnförslag: wrongGuessCount
 let timeLeft = 60; // 1 minut i sekunder
 let timerInterval;
 
+
 // DOM elements
 const wordDisplay = document.getElementById("word-display");
 const wrongGuessesDisplay = document.getElementById("wrong-guesses");
@@ -20,10 +21,20 @@ const hangmanImage = document.querySelector(".hangman svg");
 const resultText = document.getElementById("result-text");
 const popUpBox = document.getElementById("correct-word");
 const playAgainButton = document.getElementById("play-again-button");
+const guessInput = document.getElementById("guess-input");
+let hideEndOFGame = document.querySelector(".container")
+let showTitle = document.querySelector(".result")
+let timerButton = document.querySelector("#startTimer")
 
+// Eventlisteners
+playAgainButton.addEventListener("click",() => 
+{window.location.reload()})
 
-// Starta timern när spelet börjar
-//startTimer();
+guessInput.addEventListener("keydown",(event) =>
+{if(event.key === "Enter"){makeGuess()}})
+
+timerButton.addEventListener("click", timer)
+
 updateWordDisplay(); // startar spelet
 // Funktion för att visa
 function updateWordDisplay()
@@ -38,15 +49,6 @@ function updateWordDisplay()
     
     }
 }
-
-// Eventlistener: tryck enter för att gissa på en bokstav
-const guessInput = document.getElementById("guess-input");
-guessInput.addEventListener("keydown",(event) => {
-    if(event.key === "Enter"){makeGuess()}})
-
-   
-
-
 
 // Funktion för hantering av gissningar.
 function makeGuess()
@@ -93,8 +95,6 @@ function makeGuess()
     }
 }
 
-
-
 function isValidGuess(guess)
 {
 
@@ -135,9 +135,6 @@ function updateHangman() {
 }
 
 // Funktion för att avsluta spelet och visa resultatet
-let hideEndOFGame = document.querySelector(".container")
-let showTitle = document.querySelector(".result")
-
 function endGame(isWinner) {
    
     if (isWinner) {
@@ -154,24 +151,12 @@ function endGame(isWinner) {
         showTitle.style.display = "block";
        
     }
+    clearInterval(timerInterval) // Denna funktion stoppar timern
 }
 
-// Event listeners för den tidigare gissningknappen. Just nu bortkommenterad i html.
-/* const guessButton = document.getElementById("guess-button");
-guessButton.addEventListener("click", makeGuess); */
-
-
-// Eventlistener som gör en Page reload vid tryck på playagain-knappen
-playAgainButton.addEventListener("click",() => 
-{window.location.reload()})
-
-//Funktion för att starta timer
- function startTimer() {
-    timerInterval = setInterval(function() {
-        if (timeLeft <= 0) {
-            endGame();
-        } else {
-            // Konvertera tiden till formatet mm:ss
+function timer() {
+        timerInterval = setInterval(function() 
+        {
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft  %60;
             const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
@@ -181,18 +166,15 @@ playAgainButton.addEventListener("click",() =>
 
             // Minska tiden med 1 sekund
             timeLeft--;
+         if(timeLeft < 0)
+        {
+            endGame()
+
         }
-    }, 1000); // Uppdatera varje sekund
+        }, 1000); // Uppdatera varje sekund
+
+       
 }
- 
-//Funktion för att återställa timer. Starta den igen.
-// Ev överflöodig pga pageReload.
-function resetTimer() {
-    clearInterval(timerInterval);
-    timeLeft = 60; // Återställ till 1 minut
-    startTimer(); // Starta om timern
-}
-//resetTimer();
 
 
 

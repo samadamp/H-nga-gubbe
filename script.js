@@ -9,7 +9,7 @@ let randomWord = words[Math.floor(Math.random() * words.length)];
 let correctGuesses = Array(randomWord.length).fill(false);
 let wrongGuesses = [];
 const correctGuessedLetters = []
-let wrongGuessCount = 0; // namnförslag: wrongGuessCount
+let wrongGuessCount = 0;
 let timeLeft = 60; // 1 minut i sekunder
 let timerInterval;
 
@@ -96,7 +96,7 @@ function makeGuess()
         
     }
     
-    guessInput.value = "";
+    guessInput.value = ""; // rensar inputfältet
 
     if (wrongGuessCount >= 6) {
         endGame(false);

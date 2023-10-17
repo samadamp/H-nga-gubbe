@@ -107,6 +107,7 @@ function makeGuess()
 
 function isValidGuess(guess)
 {
+    guessInput.value = "";
 
     if(!/[a-z]/.test(guess))
     {
